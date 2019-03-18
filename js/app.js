@@ -12,7 +12,6 @@
 
 // Shuffle function from http://stackoverflow.com/a/
 
-
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -26,6 +25,39 @@ function shuffle(array) {
 
     return array;
 }
+function createArray(array){
+   var arryElem = [
+                'fa fa-diamond',
+         		'fa fa-paper-plane-o',
+           		'fa fa-anchor',
+                'fa fa-bolt',
+                'fa fa-cube',
+                'fa fa-anchor', 
+               	'fa fa-leaf',
+                'fa fa-bicycle',
+                'fa fa-diamond',
+                'fa fa-bomb',
+                'fa fa-leaf',
+                'fa fa-bomb',
+               	'fa fa-bolt',
+                'fa fa-bicycle',
+                'fa fa-paper-plane-o',
+                'fa fa-cube'
+            ];
+    arryElem = shuffle(arryElem);
+    array = arryElem;
+    return array;
+}
+
+function prepareGame(){
+   $(this).addClass(array.pop());
+}
+function removeGame(){
+	$(this).removeClass();
+}
+var array = createArray();
+
+$('.card i').each(prepareGame);
 
 var moves =0;
 var block = false;
@@ -77,18 +109,22 @@ $('.restart').on('click',function(){
 	$('.card').removeClass('open show match');
 	moves = 0;
 	$('.moves').text(0);
+	$('.card i').each(removeGame);
+	array = createArray();
+	$('.card i').each(prepareGame);
+
 });
 
 $('.card').on('click',function(){
 	var totalMatch = $('.match').val('n').length;
 	console.log(totalMatch);
 	if(totalMatch >= 16){
-		$('#modal1').modal({clickClose:false});
+		$('.modal').modal({clickClose:false});
 	}
 });
-
-$('#button1').on('click',function(){
-	$('#modal1').modal('hide');
+// quebrei a cabeça mas nao sei porque nao fecha o modal pelo evt, somente aquele botao X fecha).
+$('.modal').on('click',function(){
+	$('.modal').modal('hide');
 });
 
 /*
