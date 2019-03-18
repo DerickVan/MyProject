@@ -25,35 +25,48 @@ function shuffle(array) {
     return array;
 }
 
+var moves =0;
+var block = false;
+$('.moves').text('0');
+
 $('.card').on('click',function(){
-	if(!$(this).hasClass('match')){
-		var card = $(this).children().attr('class');
-		var card =$(this).addClass('open show');
+	if(!$(this).hasClass('match') && !block){
+		var card = $(this).addClass('open show');
 		var val =  $('.open').val('n').length;
 		
 		if(val >= 2){
+			block = true;
 			var select1 = $('.open').first();
 			var select2 = $('.open').last();
 			if(select1.children().hasClass(select2.children().attr('class'))){
-				$('.open').addClass('match');
-				$('.open').effect("bounce",500);
+				$(select1).addClass('match');
+				$(select2).addClass('match');
+				$(select1).effect("bounce",500);
+				$(select2).effect("bounce",500);
+				
 				setTimeout(function(){
-	        	$('.open').removeClass('open show');
-				},510);
+	        	$(select1).removeClass('open show');
+				$(select2).removeClass('open show');
+				},400);
 				
 			}else{
-			$('.open').effect("shake",600);
-			$('.open').css('background-color','red');
+				$('.open').effect("shake",500);
+				$('.open').css('background-color','red');
 
-			setTimeout(function(){
-	        	$('.open').removeClass('open show');
-				},610);
+				setTimeout(function(){
+		        	$(select1).removeClass('open show');
+					$(select2).removeClass('open show');
+				},400);
 
 			}
-		}
-	}
+			moves++;
+			$('.moves').text(moves);
 
-});
+		}
+		var timer =	 setInterval(function(){
+			block = false;
+		}, 1000);
+	}
 
 
 
