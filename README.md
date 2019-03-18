@@ -9,7 +9,7 @@
 
 Clone the GitHub repository to install.
 
-$ git clone http://github.com/
+$ git clone https://github.com/DerickVan/MyProject.git
 
 ## Instructions
 
