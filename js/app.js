@@ -25,6 +25,37 @@ function shuffle(array) {
     return array;
 }
 
+$('.card').on('click',function(){
+	if(!$(this).hasClass('match')){
+		var card = $(this).children().attr('class');
+		var card =$(this).addClass('open show');
+		var val =  $('.open').val('n').length;
+		
+		if(val >= 2){
+			var select1 = $('.open').first();
+			var select2 = $('.open').last();
+			if(select1.children().hasClass(select2.children().attr('class'))){
+				$('.open').addClass('match');
+				$('.open').effect("bounce",500);
+				setTimeout(function(){
+	        	$('.open').removeClass('open show');
+				},510);
+				
+			}else{
+			$('.open').effect("shake",600);
+			$('.open').css('background-color','red');
+
+			setTimeout(function(){
+	        	$('.open').removeClass('open show');
+				},610);
+
+			}
+		}
+	}
+
+});
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
