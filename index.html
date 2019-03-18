@@ -91,17 +91,19 @@
             </li>
         </ul>
     </div>
-
     <div id="myModal" class="modal">
-       <div>
-            <div class="modal-body">
-                <p>Parabéns,Você Ganhou!!</p>
-                <p>Com <span class="moves"></span> movimentos e ganhou  <span class="nstar"></span> estrelas, você terminou o jogo em <span class="temp"></span> segundos.</p>
-                <p>Boa!</p>
-
-                <button id="button1" type="button" class="restart">Jogar Denovo!</button>
-            </div>
-        </div> 
+      <p>Parabéns,Você Ganhou!!</p>
+      <p>
+        Com <span class="moves"></span> movimentos e ganhou
+        <span class="nstar"></span> estrelas, você terminou o jogo em
+        <span class="temp"></span> segundos.
+      </p>
+      <p>Boa!</p>
+      <button class="restart">
+        <a href="#" rel="modal:close" class="btn">
+          Jogar Denovo!
+        </a>
+      </button>
     </div>
 
     <script src="js/app.js"></script>

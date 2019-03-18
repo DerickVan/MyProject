@@ -140,21 +140,17 @@ $('.restart').on('click',function(){
 $('.card').on('click',function(){
 	var totalMatch = $('.match').val('n').length;
 	console.log(totalMatch);
-	if(totalMatch >= 2){
+	if(totalMatch >= 16){
 		$('#myModal').modal('show');
 		console.log(temporizador);
 		console.log(Date.now());
 		temporizador = (Date.now() - temporizador)/1000;
-		$('.temp').text(temporizador);
+		$('.temp').text(temporizador.toFixed(2));
 		$('.nstar').text($('.stars li').length);
 
 	}
 });
 // quebrei a cabeça mas nao sei porque nao fecha o modal pelo evt, somente aquele botao X fecha).
-$('#button1').on('click',function(){
-	$('#myModal').modal('hide');
-	console.log('foi clicado');
-});
 
 
 
