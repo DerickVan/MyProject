@@ -6,11 +6,13 @@
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
+ *   -2450976 loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+// Shuffle function from http://stackoverflow.com/a/
+
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -28,6 +30,7 @@ function shuffle(array) {
 var moves =0;
 var block = false;
 $('.moves').text('0');
+
 
 $('.card').on('click',function(){
 	if(!$(this).hasClass('match') && !block){
@@ -68,7 +71,25 @@ $('.card').on('click',function(){
 		}, 1000);
 	}
 
+});
+$('.restart').on('click',function(){
+	console.log('restart');
+	$('.card').removeClass('open show match');
+	moves = 0;
+	$('.moves').text(0);
+});
 
+$('.card').on('click',function(){
+	var totalMatch = $('.match').val('n').length;
+	console.log(totalMatch);
+	if(totalMatch >= 16){
+		$('#modal1').modal({clickClose:false});
+	}
+});
+
+$('#button1').on('click',function(){
+	$('#modal1').modal('hide');
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
