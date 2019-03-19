@@ -108,7 +108,7 @@ function starsProcess(moves){
 	if(moves == 20){
 		$('.stars').children().last().remove();
 	}
-	if(moves == 28){
+	if(moves == 26){
 		$('.stars').children().last().remove();	
 	}
 }
@@ -164,7 +164,7 @@ $('.restart').on('click',function(){
 	var elem ='<li><i class="fa fa-star"></i></li>';
 	}
 	if(moves >= 26){
-	elem = + elem +' <li><i class="fa fa-star"></i></li>';
+	elem +=' <li><i class="fa fa-star"></i></li>';
 	}
 	$('.stars').append(elem);
 	moves = 0;
@@ -172,7 +172,7 @@ $('.restart').on('click',function(){
 
 $('.card').on('click',function(){
 	var totalMatch = $('.match').val('n').length;
-	if(totalMatch >= 2){
+	if(totalMatch >= 16){
 		tempo("parar");
 		$('#myModal').modal('show');
 		$('.nstar').text($('.stars li').length);
