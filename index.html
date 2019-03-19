@@ -27,14 +27,13 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars">
+            <ul class="stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="moves"></span> Moves
-
+        	<span class="moves"></span>   Moves.   Tempo: <span id="hora">00h</span><span id="minuto">00m</span><span id="segundo">00s</span>
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
@@ -95,16 +94,17 @@
       <p>Parabéns,Você Ganhou!!</p>
       <p>
         Com <span class="moves"></span> movimentos e ganhou
-        <span class="nstar"></span> estrelas, você terminou o jogo em
-        <span class="temp"></span> segundos.
+        <span class="nstar"></span> estrelas, você terminou o jogo em <span class="temp"></span>.
+
       </p>
       <p>Boa!</p>
       <button class="restart">
-        <a href="#" rel="modal:close" class="btn">
+        <a id='link' href="#" rel="modal:close" class="btn">
           Jogar Denovo!
         </a>
       </button>
     </div>
+
 
     <script src="js/app.js"></script>
     

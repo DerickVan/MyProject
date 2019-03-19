@@ -13,8 +13,41 @@
 // Shuffle function from http://stackoverflow.com/a/
 var moves =0;
 var block = false;
-var temporizador = 0;
 var inicioTemp= false;
+var intervalo;
+
+function tempo(op) {
+	if(op == "inicio"){
+	var s = 1;
+	var m = 0;
+	var h = 0;
+	intervalo = window.setInterval(function() {
+		if (s == 60) { m++; s = 0; }
+		if (m == 60) { h++; s = 0; m = 0; }
+		if (h < 10) $('#hora').text("0" + h + "h"); else $('#hora').text(h + "h");
+		if (s < 10) $('#segundo').text("0" + s + "s"); else $('#segundo').text(s + "s");
+		if (m < 10) $('#minuto').text("0" + m + "m"); else $('#minuto').text(m + "m");		
+		s++;
+	},1000);
+	}else if(op == "parar"){
+		window.clearInterval(intervalo);
+		console.log("teste parar");
+		var hora = 	$('#hora').text() + 
+					$('#minuto').text() +
+					$('#segundo').text();
+		$('.temp').text(hora);
+	}else if(op == "limpar"){
+		window.clearInterval(intervalo);
+		s = 0;
+		m = 0;
+		h = 0;
+		$('#hora').text("00h");
+		$('#minuto').text("00m");
+		$('#segundo').text("00s");
+	}
+}
+
+	
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -104,7 +137,7 @@ $('.moves').text('0');
 
 $('.card').on('click',function(){
 	if(!inicioTemp){
-		temporizador = Date.now();
+		tempo("inicio");
 		inicioTemp=true;
 	}
 	if(!$(this).hasClass('match') && !block){
@@ -120,7 +153,7 @@ $('.card').on('click',function(){
 	});
 
 $('.restart').on('click',function(){
-	console.log('restart');
+	tempo("limpar");
 	$('.card').removeClass('open show match');
 	$('.moves').text(0);
 	$('.card i').each(removeGame);
@@ -139,18 +172,13 @@ $('.restart').on('click',function(){
 
 $('.card').on('click',function(){
 	var totalMatch = $('.match').val('n').length;
-	console.log(totalMatch);
-	if(totalMatch >= 16){
+	if(totalMatch >= 2){
+		tempo("parar");
 		$('#myModal').modal('show');
-		console.log(temporizador);
-		console.log(Date.now());
-		temporizador = (Date.now() - temporizador)/1000;
-		$('.temp').text(temporizador.toFixed(2));
 		$('.nstar').text($('.stars li').length);
 
 	}
 });
-// quebrei a cabeça mas nao sei porque nao fecha o modal pelo evt, somente aquele botao X fecha).
 
 
 
